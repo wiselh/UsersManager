@@ -1,12 +1,36 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>login</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
+<ion-content class="main-container">
+    <div class="bg-image"></div>
+    <div paddind>
+        <ion-list>
+            <ion-item>
+                <!-- <ion-icon name="thumbs-up" class="ion-md-thumbs-up"></ion-icon> -->
+                <ion-input type="email" #email placeholder="Email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="md-lock"></ion-icon>
+                <ion-input type="password" #password placeholder="Password"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+    <div padding>
+        <button ion-button class="login-btn" color="primary" full (click)="loggedIn()">Sign In</button>
+        <p>You don't have an Account?
+            <button class="register-btn" (click)="registerPage()">Create an Account</button>
+        </p>
 
-<ion-content padding>
+        <div class="text-network">
+            <p>*** Log In With Social Network ***</p>
+        </div>
+        <button ion-button class="btn-facebook" full (click)="loginWithFacebook()">LOGIN WITH FACEBOOK</button>
+    </div>
+
 
 </ion-content>

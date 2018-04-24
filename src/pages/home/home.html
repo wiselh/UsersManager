@@ -1,14 +1,44 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Home</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-grid>
+  <ion-row>
+    <ion-col col-12>
+     <div class="bg-home"></div>
+    </ion-col>
+    <ion-col col-6>
+        <button ion-button full color="success">Users Manager</button>
+    </ion-col>
+    <ion-col col-6>
+      <button ion-button full color="success">Delete Users</button>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>
 </ion-content>
+<!-- 
+<div *ngIf="itemState && itemToEdite.id == item.id">
+  
+  <form (ngSubmit)="updateItem(item)" class="col s6">
+    
+    <div class="row">
+      
+      <div class="input-field col s6">
+        
+        <input type="text" placeholder="Add Title" [(ngModel)]="item.title" name="title">  </div>
+      
+      <div class="input-field col s6">
+        
+        <input type="text" placeholder="Add Description" [(ngModel)]="item.description" name="description">  </div>
+      
+      <input type="submit" class="btn orange" value="Update"> 
+      <button (click)="deteleItem($event,item)" class="btn red">Delete</button>
+       </div>
+     </form>
+   </div> -->

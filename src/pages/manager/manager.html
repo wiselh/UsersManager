@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Users Manager</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- <ion-list>
+    <ion-list-header>
+      Users
+    </ion-list-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-8>
+          <a ion-item *ngFor="let user of users" (click)="openModal({userId: user.id})">
+            {{ user.firstname }} {{ user.lastname }}
+          </a>
+        </ion-col>
+        <ion-col col-4>
+          Delete
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+      
+  
+  </ion-list> -->
+
+<ion-list>
+  <ion-item *ngFor="let user of users">
+    <p>{{ user.firstname }}</p> <p>{{ user.lastname }}</p> <p>{{ user.email }}</p>
+    <p>{{ user.createdAt }}</p>
+  </ion-item>
+</ion-list>
+</ion-content>

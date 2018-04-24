@@ -9,9 +9,14 @@ import { HomePage } from '../pages/home/home';
 //added
 import { LoginPage } from './../pages/login/login';
 import { RegisterPage } from './../pages/register/register';
+import { ManagerPage, ModalContentPage } from '../pages/manager/manager';
+import { TabsPage } from '../pages/tabs/tabs';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { UserService } from '../services/user.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAZsh4FiCGSr0s-5oM72N-27Y7UdpjKesw",
@@ -27,7 +32,10 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ManagerPage,
+    TabsPage,
+    ModalContentPage
   ],
   imports: [
     BrowserModule,
@@ -35,15 +43,20 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ManagerPage,
+    TabsPage,
+    ModalContentPage
   ],
   providers: [
+    UserService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
