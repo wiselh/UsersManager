@@ -28,16 +28,16 @@ export class UserService {
         return this.users;
     }
 
-    addItem(user: User) {
+    addUser(user: User) {
         this.usersCollection.add(user);
     }
 
-    // deleteItem(item: Item) {
-    //     this.itemDoc = this._db.doc(`/items/${item.id}`);
-    //     this.itemDoc.delete();
-    // }
-    // updateItem(item: Item) {
-    //     this.itemDoc = this._db.doc(`/items/${item.id}`);
-    //     this.itemDoc.update(item);
-    // }
+    deleteUser(user: User) {
+        this.userDoc = this._db.doc(`/users/${user.id}`);
+        this.userDoc.delete();
+    }
+    updateUser(user: User) {
+        this.userDoc = this._db.doc(`/users/${user.id}`);
+        this.userDoc.update(user);
+    }
 }

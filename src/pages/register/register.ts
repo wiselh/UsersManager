@@ -17,12 +17,19 @@ export class RegisterPage {
   usersCollection: AngularFirestoreCollection<User>;
   users: Observable<User[]>;
   userDoc: AngularFirestoreDocument<User>;
+  //date
+  dateF = new Date();
+  day = this.dateF.getDay();
+  month = this.dateF.getMonth();
+  year = this.dateF.getFullYear();
+  date: string = this.day+'/' + this.month+'/' + this.year
+
   user: User = {
     firstname: '',
     lastname: '',
     email: '',
     password: '',
-    createdAt: new Date().toLocaleDateString()
+    createdAt: new Date().toLocaleDateString() // Or this.date
   };
 
   constructor(

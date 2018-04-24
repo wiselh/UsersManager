@@ -1,8 +1,12 @@
 import { Component, Injectable } from '@angular/core';
-import { NavController, NavParams, ModalController, Platform, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ModalController} from 'ionic-angular';
 import { User } from '../../models/User';
 import { UserService } from '../../services/user.service';
-import { Observable } from 'rxjs/observable';
+// import { Observable } from 'rxjs/observable';
+import { RegisterPage } from '../register/register';
+import { ModalUserInfoPage } from '../info/info-modal';
+
+
 
 @Injectable()
 @Component({
@@ -10,40 +14,34 @@ import { Observable } from 'rxjs/observable';
   templateUrl: 'manager.html',
 })
 export class ManagerPage {
-  users: User[];
-  constructor(private modalCtrl: ModalController, private userService: UserService) {}
+
+  users: User[] = [];
+
+  constructor(
+    private modalCtrl: ModalController,
+    private userService: UserService,
+    public navCtrl: NavController,) {}
 
   ionViewWillEnter() {
-  
     this.userService.getUsers().subscribe(users => {
       this.users = users;
     });
   }
 
-  // openModal(characterNum) {
-
-  //   let modal = this.modalCtrl.create(ModalContentPage, characterNum);
-  //   modal.present();
-  // }
-
-}
-
-@Component({
-  templateUrl: 'manage-modal.html'
-})
-
-export class ModalContentPage {
-
-
-
-  constructor(
-    public platform: Platform,
-    public params: NavParams,
-    public viewCtrl: ViewController) {
-
+  registerPage() {
+    this.navCtrl.push(RegisterPage);
   }
 
-  dismiss() {
-    // this.viewCtrl.dismiss();
+  showInfos(userId) {
+    let modal = this.modalCtrl.create(ModalUserInfoPage, userId);
+    modal.present();
   }
+  deleteUser(user){
+    
+      console.log('delete clicked');
+      // this.userService.deleteUser(user);
+      console.log(user);
+    
+  }
+
 }

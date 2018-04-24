@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Update
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios">Back</span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngFor="let user of users">
+        <div *ngIf="user.id===userId">
+            <ion-list>
+                <ion-item>
+                    <ion-label>Firstname</ion-label>
+                    <ion-input type="text" [(ngModel)]="user.firstname" placeholder="...." name="firstname"></ion-input>
+                   <input  >
+                </ion-item>
+                <ion-item>
+                    <ion-label>Lastname</ion-label>
+                    <ion-input type="text" [(ngModel)]="user.firstname" placeholder="...." name="lastname"></ion-input>
+                    <input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Email</ion-label>
+                    <ion-input type="text" [(ngModel)]="user.firstname" placeholder="...." name="email"></ion-input>
+                    <input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Password</ion-label>
+                    <ion-input type="text" [(ngModel)]="user.firstname" placeholder="...." name="password"></ion-input>
+                    <input>
+                </ion-item>
+                <ion-item>
+                        <button ion-button block color="success" (click)="updateUser({ user: user })">Update</button>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

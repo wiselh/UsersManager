@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import {NavController, NavParams, AlertController, Loading, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, Loading, LoadingController } from 'ionic-angular';
 //imported
 import { AngularFireAuth } from 'angularfire2/auth';
 import { RegisterPage } from './../register/register';
@@ -15,7 +15,7 @@ export class LoginPage {
   rootPage: any = TabsPage;
   @ViewChild('email') email;
   @ViewChild('password') password;
-  
+
   loading: Loading;
 
   constructor(
@@ -24,7 +24,7 @@ export class LoginPage {
     public alertCtrl: AlertController,
     private fire_auth: AngularFireAuth,
     private loadingCtrl: LoadingController
-  ) {}
+  ) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -42,17 +42,17 @@ export class LoginPage {
       });
   }
 
-  registerPage(){
- this.navCtrl.push(RegisterPage);
+  registerPage() {
+    this.navCtrl.push(RegisterPage);
   }
 
-  loginWithFacebook(){
+  loginWithFacebook() {
     this.fire_auth.auth
       .signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then(res => {
-        this.alert('Logged in successefuly');            
+        this.alert('Logged in successefuly');
         this.navCtrl.setRoot(TabsPage);
-        });
+      });
   }
   showLoading() {
     this.loading = this.loadingCtrl.create({

@@ -9,30 +9,21 @@
 
 <ion-content padding>
 
-  <!-- <ion-list>
+  <ion-list>
     <ion-list-header>
       Users
     </ion-list-header>
+
     <ion-grid>
-      <ion-row>
-        <ion-col col-8>
-          <a ion-item *ngFor="let user of users" (click)="openModal({userId: user.id})">
-            {{ user.firstname }} {{ user.lastname }}
-          </a>
+      <ion-row *ngFor="let user of users">
+        <ion-col col-11>
+          <a (click)="showInfos({userId: user.id})"> {{ user.email }} </a>
         </ion-col>
-        <ion-col col-4>
-          Delete
+        <ion-col col-1>
+          <ion-icon name="apps" color="danger" (click)="deleteUser({user: user})"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
-      
-  
-  </ion-list> -->
-
-<ion-list>
-  <ion-item *ngFor="let user of users">
-    <p>{{ user.firstname }}</p> <p>{{ user.lastname }}</p> <p>{{ user.email }}</p>
-    <p>{{ user.createdAt }}</p>
-  </ion-item>
-</ion-list>
+  </ion-list>
+  <button ion-button clear class="register-btn" (click)="registerPage()">Create an Account</button>
 </ion-content>
