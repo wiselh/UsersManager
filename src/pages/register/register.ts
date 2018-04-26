@@ -44,16 +44,19 @@ export class RegisterPage {
  
 
   register() {
-    this.fire_auth.auth
-      .createUserWithEmailAndPassword(this.user.email, this.user.password)
-      .then(data => {
-        this.usersCollection.add(this.user);
-        this.alert('Registred successefuly');
-        this.navCtrl.setRoot(LoginPage);
-      })
-      .catch(error => {
-        this.alert('Error : ' + error);
-      });
+    this.usersCollection.add(this.user);
+    this.alert('Registred successefuly');
+    this.navCtrl.setRoot(LoginPage);
+    // this.fire_auth.auth
+    //   .createUserWithEmailAndPassword(this.user.email, this.user.password)
+    //   .then(data => {
+    //     this.usersCollection.add(this.user);
+    //     this.alert('Registred successefuly');
+    //     this.navCtrl.setRoot(LoginPage);
+    //   })
+    //   .catch(error => {
+    //     this.alert('Error : ' + error);
+    //   });
   }
 
   alert($message) {

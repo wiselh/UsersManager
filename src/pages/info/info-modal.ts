@@ -7,12 +7,20 @@ import { ModalUserUpdatePage } from "../edit/edit-modal";
 
 @Component({
     templateUrl: 'info-modal.html',
-    providers:[UserService]
+    providers:[UserService],
+    
 })
 
 export class ModalUserInfoPage {
     users: User[];
     userId: string = this.navParams.get('userId');
+    user: User = {
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: '',
+        createdAt: ''
+    };
     constructor(
         public navParams: NavParams, 
         public viewCtrl: ViewController,
@@ -20,28 +28,22 @@ export class ModalUserInfoPage {
         private userService:UserService) {
         this.userService.getUsers().subscribe(users => {
             this.users = users;
+            for (var key in this.users) {
+                var user = this.users[key];
+                if (user.id == this.userId) {
+                    this.user = user;
+                }
+            }
         });        
     }
-
-    ionViewWillEnter() {}
 
     dismiss() {
         this.viewCtrl.dismiss();
     }
-    // editUser(user){
-    //     console.log('edit clicked');
-    //     // this.userService.updateUser(user);
-    //     console.log(user);
-    // }
-    deleteUser(user){
-        console.log('delete clicked');
-        // this.userService.deleteUser(user);
-        console.log(user);
+    deleteUser(event, user: User){
+        this.userService.deleteUser(user);
     }
     showUpdatePage(userId) {
-        console.log('edit clicked');
-        console.log(userId);
-
         let modal = this.modalCtrl.create(ModalUserUpdatePage, userId);
         modal.present();
     }

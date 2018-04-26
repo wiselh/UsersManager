@@ -5,25 +5,25 @@
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
-
-  <ion-list>
-    <ion-list-header>
-      Users
-    </ion-list-header>
-
-    <ion-grid>
-      <ion-row *ngFor="let user of users">
-        <ion-col col-11>
+  <ion-fab top right>
+    <button ion-fab mini color="primary" (click)="showAddModal()">+</button>
+  </ion-fab>
+<h2>Users</h2>
+  <mat-card *ngFor="let user of users">
+      <ion-row>
+        <ion-col col-2>
+          <ion-avatar>
+            <img src="assets/imgs/avatar.jpeg" style="width: 30px;height: 30px;border-radius: 50%;overflow: hidden;">
+          </ion-avatar>
+        </ion-col>
+        <ion-col col-7>
           <a (click)="showInfos({userId: user.id})"> {{ user.email }} </a>
         </ion-col>
-        <ion-col col-1>
-          <ion-icon name="apps" color="danger" (click)="deleteUser({user: user})"></ion-icon>
+        <ion-col col-3>
+          <ion-icon name="md-create" color="primary" style="margin-right: 5px" (click)="showUpdatePage({userId: user.id})"></ion-icon>
+          <ion-icon name="md-trash" color="danger" (click)="deleteUser($event,user)"></ion-icon>
         </ion-col>
       </ion-row>
-    </ion-grid>
-  </ion-list>
-  <button ion-button clear class="register-btn" (click)="registerPage()">Create an Account</button>
+  </mat-card>
 </ion-content>

@@ -12,34 +12,38 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div *ngFor="let user of users">
-        <div *ngIf="user.id===userId">
-            <ion-list>
-                <ion-item>
-                    <ion-label>Firstname</ion-label>
-                    <ion-input type="text" [(ngModel)]="user.firstname" placeholder="...." name="firstname"></ion-input>
-                   <input  >
-                </ion-item>
-                <ion-item>
-                    <ion-label>Lastname</ion-label>
-                    <ion-input type="text" [(ngModel)]="user.firstname" placeholder="...." name="lastname"></ion-input>
-                    <input>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Email</ion-label>
-                    <ion-input type="text" [(ngModel)]="user.firstname" placeholder="...." name="email"></ion-input>
-                    <input>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Password</ion-label>
-                    <ion-input type="text" [(ngModel)]="user.firstname" placeholder="...." name="password"></ion-input>
-                    <input>
-                </ion-item>
-                <ion-item>
-                        <button ion-button block color="success" (click)="updateUser({ user: user })">Update</button>
-                </ion-item>
-            </ion-list>
-        </div>
-    </div>
+<ion-content padding>
+            <form (ngSubmit)="onSubmit()">
+                <mat-form-field>
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                    <input type="text" matInput placeholder="Firstname" [(ngModel)]="user.firstname" name="firstname" required>
+                </mat-form-field>
+                <mat-error class="error_message" *ngIf="firstname_required">First Name is
+                    <strong>required</strong>
+                </mat-error>
+                <mat-form-field>
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                    <input type="text" matInput placeholder="Lastname" [(ngModel)]="user.lastname" name="lastname" required>
+                    <mat-error class="error_message" *ngIf="lastname_required">Last Name is
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-icon matSuffix>mail</mat-icon>
+                    <input type="text" matInput placeholder="Email" [(ngModel)]="user.email" name="email" required>
+                    <mat-error class="error_message" *ngIf="email_required">Email is
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <!-- <mat-form-field>
+                    <ion-icon matSuffix name="key"></ion-icon>
+                    <input type="password" matInput placeholder="Password" [(ngModel)]="user.password" name="password" required>
+                    <mat-error class="error_message" *ngIf="password_required">Password is
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field> -->
+                <br>
+                <button ion-button type="submit" full color="secondary">Update</button>
+                <button ion-button full (click)="dismiss()" color="light">Cancel</button>
+            </form>
 </ion-content>

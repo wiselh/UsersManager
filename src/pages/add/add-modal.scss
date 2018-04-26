@@ -1,0 +1,12 @@
+add-modal {
+.example-container {
+  display: flex;
+  flex-direction: column;
+background: red;
+  
+}
+
+.example-container > * {
+  width: 100%;
+}
+}

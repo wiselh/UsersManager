@@ -13,7 +13,7 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = ManagerPage;
-  tab3Root = ManagerPage;
+  tab3Root = '';
   constructor(private fire_auth: AngularFireAuth, public navCtrl: NavController) {}
 
   logOut(){

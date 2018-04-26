@@ -13,8 +13,6 @@
 </ion-header>
 
 <ion-content>
-    <div *ngFor="let user of users">
-        <div *ngIf="user.id===userId">
             <ion-list>
                 <ion-item>
                     <ion-avatar item-start>
@@ -44,9 +42,8 @@
                 </ion-item>
                 <ion-item>
                         <button ion-button block color="primary" (click)="showUpdatePage({userId: user.id})">Edit</button>
-                        <button ion-button block color="danger" (click)="deleteUser({ user: user })">Delete</button>
+                        <button ion-button block color="danger" (click)="deleteUser($event,user)">Delete</button>
+                        <button ion-button block color="light" (click)="dismiss()">Delete</button>
                 </ion-item>
             </ion-list>
-        </div>
-    </div>
 </ion-content>

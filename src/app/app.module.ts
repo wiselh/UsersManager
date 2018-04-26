@@ -11,25 +11,25 @@ import { LoginPage } from './../pages/login/login';
 import { RegisterPage } from './../pages/register/register';
 import { ManagerPage } from '../pages/manager/manager';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ModalUserUpdatePage } from '../pages/edit/edit-modal';
+import { ModalUserInfoPage } from '../pages/info/info-modal';
+import { ModalUserAddPage } from '../pages/add/add-modal';
 
+//database Modules
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { UserService } from '../services/user.service';
-import { ModalUserUpdatePage } from '../pages/edit/edit-modal';
-import { ModalUserInfoPage } from '../pages/info/info-modal';
+import { UserService, firebaseConfig } from '../services/user.service';
+//animations Module
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//material modules
+import { MatInputModule, MatButtonModule,
+         MatFormFieldModule, MatExpansionModule, 
+        MatCardModule, MatListModule, MatIconModule, MatSortModule,MatTableModule
+        } from '@angular/material';
 
-
-export const firebaseConfig = {
-  apiKey: "AIzaSyAZsh4FiCGSr0s-5oM72N-27Y7UdpjKesw",
-    authDomain: "ionic-usermanager.firebaseapp.com",
-    databaseURL: "https://ionic-usermanager.firebaseio.com",
-    projectId: "ionic-usermanager",
-    storageBucket: "",
-    messagingSenderId: "228601455763"
-};
-
+        
 @NgModule({
   declarations: [
     MyApp,
@@ -39,7 +39,8 @@ export const firebaseConfig = {
     ManagerPage,
     TabsPage,
     ModalUserInfoPage,
-    ModalUserUpdatePage
+    ModalUserUpdatePage,
+    ModalUserAddPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,10 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule,
+    MatButtonModule, MatFormFieldModule, MatInputModule, MatTableModule,
+    MatExpansionModule, MatCardModule, MatListModule, MatIconModule, MatSortModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,7 +62,8 @@ export const firebaseConfig = {
     ManagerPage,
     TabsPage,
     ModalUserInfoPage,
-    ModalUserUpdatePage
+    ModalUserUpdatePage,
+    ModalUserAddPage
   ],
   providers: [
     UserService,

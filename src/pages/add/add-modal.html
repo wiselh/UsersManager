@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Add New User
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios">Back</span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <mat-icon matSuffix>mode_edit</mat-icon>
+            <input type="text" matInput placeholder="Firstname" [(ngModel)]="user.firstname" name="firstname" required>
+        </mat-form-field>
+        <mat-error class="error_message" *ngIf="firstname_required">First Name is
+            <strong>required</strong>
+        </mat-error>
+        <mat-form-field>
+            <mat-icon matSuffix>mode_edit</mat-icon>
+            <input type="text" matInput placeholder="Lastname" [(ngModel)]="user.lastname" name="lastname" required>
+            <mat-error class="error_message" *ngIf="lastname_required">Last Name is
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-icon matSuffix>mail</mat-icon>
+            <input type="text" matInput placeholder="Email" [(ngModel)]="user.email" name="email" required>
+            <mat-error class="error_message" *ngIf="email_required">Email is
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <ion-icon matSuffix name="key"></ion-icon>
+            <input type="password" matInput placeholder="Password" [(ngModel)]="user.password" name="password" required>
+            <mat-error class="error_message" *ngIf="password_required">Password is
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <button ion-button type="submit" full color="secondary">Add</button>
+        <button ion-button full (click)="cancel()" color="light">Cancel</button>
+    </form>
+</ion-content>
